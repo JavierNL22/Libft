@@ -14,11 +14,18 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (dest != NULL || src != NULL){
 	unsigned char		*pointerd;
 	const unsigned char	*pointers;
 	size_t				counter;
 
+	if (dest == NULL && n == 0)
+	{
+		return (NULL);
+	}
+	if (n == 0)
+	{
+		return (dest);
+	}
 	counter = 0;
 	pointerd = dest;
 	pointers = src;
@@ -28,7 +35,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		counter++;
 		pointerd++;
 		pointers++;
-	}
 	}
 	return (dest);
 }
