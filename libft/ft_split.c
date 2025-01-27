@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-size_t	ft_count_words(char const *s, char c)
+static size_t	ft_count_words(char const *s, char c)
 {
 	size_t	i;
 	size_t	num_words;
@@ -30,7 +30,7 @@ size_t	ft_count_words(char const *s, char c)
 	return (num_words);
 }
 
-size_t	ft_word_length(char const *word_start, char c)
+static size_t	ft_word_length(char const *word_start, char c)
 {
 	size_t	i;
 
@@ -50,7 +50,9 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	j = 0;
 	num_words = ft_count_words(s, c);
-	result = (char **)malloc(num_words + 1);
+	result = (char **)malloc((num_words + 1) * sizeof(char *));
+	if (!result)
+		return (NULL);
 	while (j < num_words)
 	{
 		if (s[i] != c)
@@ -61,11 +63,6 @@ char	**ft_split(char const *s, char c)
 		}
 		i++;
 	}
+	result[j] = NULL;
 	return (result);
 }
-
-// int	main(void)
-// {
-// 	printf("%zu", ft_count_words("Hola  que    tal", ' '));
-// 	return (0);
-// }
