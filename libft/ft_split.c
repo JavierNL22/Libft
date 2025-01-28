@@ -35,7 +35,7 @@ static size_t	ft_word_length(char const *word_start, char c)
 	size_t	i;
 
 	i = 0;
-	while (word_start[i] != c)
+	while (word_start[i] != c && word_start[i] != 0)
 		i++;
 	return (i);
 }

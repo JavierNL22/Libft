@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnavalla <jnavalla@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 13:49:11 by jnavalla          #+#    #+#             */
-/*   Updated: 2025/01/22 13:49:25 by jnavalla         ###   ########.fr       */
+/*   Created: 2025/01/27 12:08:26 by jnavalla          #+#    #+#             */
+/*   Updated: 2025/01/27 12:08:40 by jnavalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,44 @@
 #include <stdlib.h>
 #include "libft.h"
 
-int	ft_is_in_set(char check, char const *set)
+static int	get_char_needed(int n)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (set[i] != 0)
-	{
-		if (set[i] == check)
-			return (1);
+	if (n < 0)
 		i++;
+	while (n >= 10 || n <= -10)
+	{
+		i++;
+		n = n / 10;
 	}
-	return (0);
+	i++;
+	return (i);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_itoa(int n)
 {
 	size_t	i;
-	size_t	start;
-	size_t	len;
+	long	num;
+	char	*result;
 
-	i = 0;
-	while (ft_is_in_set(s1[i], set) && i < ft_strlen(s1))
-		i++;
-	start = i;
-	i = ft_strlen(s1) - 1;
-	while (ft_is_in_set(s1[i], set) && i >= 0)
-		i--;
-	len = i - start;
-	return (ft_substr(s1, start, len + 1));
+	num = n;
+	i = get_char_needed(n) - 1;
+	result = ft_calloc(get_char_needed(n) + 1, sizeof(char));
+	if (!result)
+		return (NULL);
+	if (num < 0)
+	{
+		num = num * -1;
+		result[0] = '-';
+	}
+	while (num >= 10)
+	{
+		result[i] = (char)(num % 10) + 48;
+		i --;
+		num = num / 10;
+	}
+	result[i] = (char)num + 48;
+	return (result);
 }

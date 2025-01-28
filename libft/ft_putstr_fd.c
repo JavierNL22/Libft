@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnavalla <jnavalla@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 16:10:00 by jnavalla          #+#    #+#             */
-/*   Updated: 2025/01/14 17:55:51 by jnavalla         ###   ########.fr       */
+/*   Created: 2025/01/27 13:33:07 by jnavalla          #+#    #+#             */
+/*   Updated: 2025/01/27 13:33:17 by jnavalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	ft_putstr_fd(char *s, int fd)
 {
-	unsigned char		*pointerd;
-	const unsigned char	*pointers;
-	size_t				counter;
+	size_t	i;
 
-	if (src == dest)
-		return (dest);
-	if (dest == NULL && n == 0)
-		return (NULL);
-	if (n == 0)
-		return (dest);
-	counter = 0;
-	pointerd = dest;
-	pointers = src;
-	while (counter < n)
+	i = 0;
+	while (s[i] != 0)
 	{
-		*pointerd = *pointers;
-		counter++;
-		pointerd++;
-		pointers++;
+		write(fd, &s[i], 1);
+		i++;
 	}
-	return (dest);
 }
