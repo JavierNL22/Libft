@@ -71,6 +71,39 @@ void test_ft_strncmp() {
     printf("Resultado de ft_strncmp: %d\n", custom);
 }
 
+void test_ft_memset() {
+    char str1[256];
+    int c;
+    int n;
+    printf("Introduce cadena a modificar: ");
+    scanf(" %[^\n]", str1);
+    printf("Introduce el caracter: ");
+    scanf("%d", &c);
+    printf("Introduce el número de caracteres a cambiar: ");
+    scanf("%d", &n);
+
+    // Comparar resultados
+    char *original = (char *) memset(str1, c, n);
+    char *custom = (char *) ft_memset(str1, c, n);
+    printf("Resultado de memset: %s\n", original);
+    printf("Resultado de ft_memset: %s\n", custom);
+}
+
+void test_ft_bzero() {
+    char str1[256];
+    int n;
+    printf("Introduce cadena a modificar: ");
+    scanf(" %[^\n]", str1);
+    printf("Introduce el número de caracteres a poner a 0: ");
+    scanf("%d", &n);
+
+    bzero(str1, n);
+    ft_bzero(str1, n);
+    // Comparar resultados
+    printf("Resultado de bzero: %s\n", str1);
+    printf("Resultado de ft_bzero: %s\n", str1);
+}
+
 // Menú principal
 int main() {
     int opcion;
@@ -79,7 +112,9 @@ int main() {
         printf("\n*** Libft Tester ***\n");
         printf("1. Probar ft_strlen\n");
         printf("2. Probar ft_strncmp\n");
-        printf("3. Salir\n");
+        printf("3. Probar ft_memset\n");
+        printf("4. Probar ft_bzero\n");
+        printf("5. Salir\n");
         printf("Selecciona una opción: ");
         scanf("%d", &opcion);
 
@@ -93,6 +128,14 @@ int main() {
             run_test(test_ft_strncmp); // Ejecutar prueba en un proceso hijo
             break;
         case 3:
+            printf("\n[Prueba: ft_memset]\n");
+            run_test(test_ft_memset); // Ejecutar prueba en un proceso hijo
+            break;
+        case 4:
+            printf("\n[Prueba: ft_bzero]\n");
+            run_test(test_ft_bzero); // Ejecutar prueba en un proceso hijo
+            break;
+        case 5:
             printf("Saliendo del tester.\n");
             return 0;
         default:
@@ -100,4 +143,3 @@ int main() {
         }
     }
 }
-

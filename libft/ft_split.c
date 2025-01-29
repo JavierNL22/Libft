@@ -40,25 +40,36 @@ static size_t	ft_word_length(char const *word_start, char c)
 	return (i);
 }
 
+void	ft_free_split(char **split, size_t j)
+{
+	while (j > 0)
+	{
+		free(split[--j]);
+	}
+	free(split);
+}
+
 char	**ft_split(char const *s, char c)
 {
-	size_t	num_words;
 	char	**result;
 	size_t	i;
 	size_t	j;
 
 	i = 0;
 	j = 0;
-	num_words = ft_count_words(s, c);
-	result = (char **)malloc((num_words + 1) * sizeof(char *));
+	result = (char **)malloc((ft_count_words(s, c) + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
-	while (j < num_words)
+	while (j < ft_count_words(s, c))
 	{
 		if (s[i] != c)
 		{
 			result[j] = ft_substr(s, i, ft_word_length(&s[i], c));
-			j++;
+			if (!result[j++])
+			{
+				ft_free_split(result, j);
+				return (NULL);
+			}
 			i = i + ft_word_length(&s[i], c) - 1;
 		}
 		i++;
