@@ -6,13 +6,13 @@
 /*   By: jnavalla <jnavalla@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 20:29:18 by jnavalla          #+#    #+#             */
-/*   Updated: 2025/05/23 20:37:48 by jnavalla         ###   ########.fr       */
+/*   Updated: 2025/06/04 23:51:30 by jnavalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_valid_input(int argc, char **argv)
+int	is_valid_input(int argc, char **args)
 {
 	int	i;
 	int	j;
@@ -21,17 +21,17 @@ int	is_valid_input(int argc, char **argv)
 	while (i < argc)
 	{
 		j = 0;
-		if (argv[i][j] == '-' || argv[i][j] == '+')
+		if (args[i][j] == '-' || args[i][j] == '+')
 			j++;
-		if (!argv[i][j])
+		if (!args[i][j])
 			return (0);
-		while (argv[i][j])
+		while (args[i][j])
 		{
-			if (!ft_isdigit(argv[i][j]))
+			if (!ft_isdigit(args[i][j]))
 				return (0);
 			j++;
 		}
-		if (!is_int_arg(argv[i]))
+		if (!is_int_arg(args[i]))
 			return (0);
 		i++;
 	}

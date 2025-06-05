@@ -6,7 +6,7 @@
 /*   By: jnavalla <jnavalla@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 16:11:13 by jnavalla          #+#    #+#             */
-/*   Updated: 2025/05/22 17:53:40 by jnavalla         ###   ########.fr       */
+/*   Updated: 2025/06/04 23:52:14 by jnavalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	stack_size(t_node *stack)
 	return (i);
 }
 
+//"Swaps" the biggest to the end of the array, then the second biggest, etc.
 void	bubble_sort(int *arr, int size)
 {
 	int	i;

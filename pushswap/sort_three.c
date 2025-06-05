@@ -6,7 +6,7 @@
 /*   By: jnavalla <jnavalla@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 16:15:42 by jnavalla          #+#    #+#             */
-/*   Updated: 2025/05/23 21:01:01 by jnavalla         ###   ########.fr       */
+/*   Updated: 2025/06/04 23:55:38 by jnavalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	sort_three_top_b(t_stack *a, t_stack *b, t_chunk *to_sort, int max)
 	sort_two(a, b, to_sort);
 }
 
-// Ordena 3 elementos en la parte de abajo de stack_a
+//Sort 3 elements in the bottom of stack_a
 void	sort_three_bottom_a(t_stack *a, t_stack *b, t_chunk *to_sort, int max)
 {
 	rra(a);
@@ -99,7 +99,7 @@ void	sort_three_bottom_a(t_stack *a, t_stack *b, t_chunk *to_sort, int max)
 	sort_two(a, b, to_sort);
 }
 
-// Ordena 3 elementos en la parte de abajo de stack_b y los pasa a a
+//Sort 3 elements in the bottom of stack_b and pass them to a
 void	sort_three_bottom_b(t_stack *a, t_stack *b, t_chunk *to_sort, int max)
 {
 	rrb(b);
