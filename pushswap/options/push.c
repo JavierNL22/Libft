@@ -6,7 +6,7 @@
 /*   By: jnavalla <jnavalla@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 18:10:02 by jnavalla          #+#    #+#             */
-/*   Updated: 2025/05/22 18:14:39 by jnavalla         ###   ########.fr       */
+/*   Updated: 2025/06/30 12:14:02 by jnavalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	push(t_stack *src, t_stack *dest)
 {
 	t_node	*node;
+	t_node	*tmp;
 
 	if (!src || !src->top)
 		return ;
@@ -26,8 +27,12 @@ void	push(t_stack *src, t_stack *dest)
 	dest->top = node;
 	if (!dest->bottom)
 		dest->bottom = node;
-	src->size--;
 	dest->size++;
+	src->size--;
+	tmp = dest->top;
+	while (tmp && tmp->next)
+		tmp = tmp->next;
+	dest->bottom = tmp;
 }
 
 void	pa(t_stack *a, t_stack *b)
