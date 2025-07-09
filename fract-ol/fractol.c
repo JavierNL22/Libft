@@ -57,7 +57,7 @@ int	parse_args(int argc, char **argv, t_fractal *f)
 		return (0);
 	if (ft_strncmp(argv[1], "mandelbrot", 11) == 0)
 		f->draw = draw_mandelbrot;
-	else if (ft_strncmp(argv[1], "julia", 5) == 0)
+	else if (ft_strncmp(argv[1], "julia", 6) == 0)
 	{
 		f->draw = draw_julia;
 		if (argc > 2)
